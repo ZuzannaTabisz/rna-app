@@ -1,0 +1,14 @@
+{
+  "name": "projectname",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:docker\"",
+    "start:backend": "cd backend && node index.js",
+    "start:frontend": "cd frontend && npm start",
+    "start:docker": "npm run clean:docker && docker run -d --name my-rna-container -p 3000:3000 my-rna-app",
+    "clean:docker": "docker rm -f my-rna-container || true"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
